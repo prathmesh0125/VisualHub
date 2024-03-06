@@ -1,0 +1,24 @@
+<% include ./partials/header.ejs %>
+
+<div class="w-full min-h-screen bg-zinc-300 flex items-center justify-center">
+  <div class="w-full md:w-[25vw] h-[70vh] bg-white px-10 py-5 rounded-md">
+    <img class="w-[45px] mx-auto mb-6" src="/images/logo.png" alt="" srcset="">
+    <h1 class="text-3xl text-center mb-6 border-inherit font-semibold text-zinc-700 tracking-tight capitalize leading-none">
+      Create New Account
+    </h1>
+    <form action="/register" method="post">
+      <label for="username">Username:</label>
+      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="text" name="username" placeholder="Username">
+      <label for="email">Email:</label>
+      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="email" name="email" placeholder="Email">
+      <label for="contact">Contact:</label>
+      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="tel" name="contact" placeholder="Contact">
+      <label for="password">Password:</label>
+      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="text" name="password" placeholder="Password">
+      <input class="border-2 block w-full px-3 py-2 mt-4 bg-blue-600 text-white rounded-full" type="submit" value="Sign up">
+    </form>
+    <a class="block mt-5 text-sm text-center font-semibold text-zinc-700" href="/">Already have an account?</a>
+  </div>
+</div>
+
+<% include ./partials/footer.ejs %>
