@@ -3,23 +3,46 @@ var router = express.Router();
 const userModel = require("./users");
 // const postModel = require("./post");
 const passport = require("passport");
-// const upload = require("./multer");
+const upload = require("./multer");
 const localStrategy = require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index",);
-  // next()
+  res.render("index",{nav:false});
+  
 });
 router.get("/register", function (req, res, next) {
-  res.render("register", { title: "Express" });
+  res.render("register", {nav:false });
   // next()
 });
-router.get("/profile", function (req, res) {
-  res.render("profile");
+router.get("/profile", isLoggedIn, 
+async function (req, res, next) {
+  const user = await userModel.findOne({
+    username: req.session.passport.user,
+  });
+  res.render("profile",{user,nav:true});
 });
-
+router.get("/add", isLoggedIn, 
+async function (req, res, next) {
+  const user = await userModel.findOne({
+    username: req.session.passport.user,
+  });
+  res.render("add",{user,nav:true});
+});
+router.post(
+  "/fileupload",
+  isLoggedIn,
+  upload.single("image"),
+  async function (req, res) {
+    const user = await userModel.findOne({
+      username: req.session.passport.user,
+    });
+    user.profileImages = req.file.filename;
+    await user.save();
+    res.redirect("/profile");
+  }
+);
 
 router.post("/register", function (req, res, next) {
   const data = new userModel({
@@ -28,12 +51,11 @@ router.post("/register", function (req, res, next) {
     contact: req.body.contact,
   });
   userModel.register(data, req.body.password).then(function () {
-    passport.authenticate('local')(req, res, function () {
+    passport.authenticate("local")(req, res, function () {
       res.redirect("/profile");
     });
   });
 });
-
 
 router.post(
   "/login",
