@@ -21,8 +21,8 @@
         />
       </div>
     </div>
-    <h1 class="text-3xl font-semibold">Prathmesh Bidve</h1>
-    <h3 class="text-md">@username</h3>
+    <h1 class="text-3xl font-semibold"><%=user.name%></h1>
+    <h3 class="text-md">@<%=user.username%></h3>
     <a
       href="/edit"
       class="px-10 mt-5 py-2 bg-zinc-700 rounded-full text-xs font-semibold"
@@ -37,23 +37,12 @@
       <div class="w-52 h-40 bg-zinc-200 rounded-md overflow-hidden">
         <img
           class="w-full h-full object-cover"
-          src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D"
+          src="/images/uploads/<%=user?.posts[0]?.image%>"
           alt="Profile Picture"
         />
       </div>
-      <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-      <h3 class="text-sm font-medium">28 Pins</h3>
-    </div>
-    <div>
-      <div class="w-52 h-40 bg-zinc-200 rounded-md overflow-hidden">
-        <img
-          class="w-full h-full object-cover"
-          src="https://images.unsplash.com/photo-1570051008600-b34baa49e751?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZyZWUlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D"
-          alt="Profile Picture"
-        />
-      </div>
-      <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-      <h3 class="text-sm font-medium">28 Pins</h3>
+      <a href="/show/posts" class="inline-block text-xl font-semibold mt-3">Your Uploaded Pins</a>
+      <h3 class="text-sm font-medium"><%=user.posts.length%> Pins</h3>
     </div>
   </div>
 </div>

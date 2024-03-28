@@ -1,23 +1,25 @@
 <% include ./partials/header.ejs %>
 
 <div class="w-full min-h-screen bg-zinc-300 flex items-center justify-center">
-  <div class="w-full md:w-[25vw] h-[70vh] bg-white px-10 py-5 rounded-md">
-    <img class="w-[45px] mx-auto mb-6" src="/images/logo.png" alt="" srcset="">
+  <div class="w-full max-w-md bg-white px-6 py-8 rounded-md">
+    <img class="w-12 mx-auto mb-6" src="/images/logo.png" alt="Logo">
     <h1 class="text-3xl text-center mb-6 border-inherit font-semibold text-zinc-700 tracking-tight capitalize leading-none">
       Create New Account
     </h1>
-    <form action="/register" method="post">
+    <form action="/register" method="post" class="space-y-4">
       <label for="username">Username:</label>
-      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="text" name="username" placeholder="Username">
+      <input class="border-2 block w-full px-3 py-2" type="text" name="username" placeholder="Username">
+      <label for="fullname">Fullname:</label>
+      <input class="border-2 block w-full px-3 py-2" type="text" name="fullname" placeholder="Fullname">
       <label for="email">Email:</label>
-      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="email" name="email" placeholder="Email">
+      <input class="border-2 block w-full px-3 py-2" type="email" name="email" placeholder="Email">
       <label for="contact">Contact:</label>
-      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="tel" name="contact" placeholder="Contact">
+      <input class="border-2 block w-full px-3 py-2" type="tel" name="contact" placeholder="Contact">
       <label for="password">Password:</label>
-      <input class="border-2 block w-full px-3 mt-2 mb-2 py-2" type="text" name="password" placeholder="Password">
-      <input class="border-2 block w-full px-3 py-2 mt-4 bg-blue-600 text-white rounded-full" type="submit" value="Sign up">
+      <input class="border-2 block w-full px-3 py-2" type="password" name="password" placeholder="Password">
+      <input class="border-2 block w-full px-3 py-2 bg-blue-600 text-white rounded-full" type="submit" value="Sign up">
     </form>
-    <a class="block mt-5 text-sm text-center font-semibold text-zinc-700" href="/">Already have an account?</a>
+    <p class="mt-5 text-sm text-center font-semibold text-zinc-700">Already have an account? <a href="/" class="text-blue-600">Sign in</a></p>
   </div>
 </div>
 
